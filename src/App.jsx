@@ -35,7 +35,16 @@ function App() {
   const handleClick = () => {
     console.log('추가 버튼 클릭');
     localStorage.setItem(inputText, inputText);
-    setInputText(''); // input value 초기화
+
+    // 상태와 데이터 불변을 유지하기 위한 배열 처리
+    // https://react.dev/learn/updating-arrays-in-state#updating-arrays-without-mutation
+
+    setTodos((current) => {
+      // return todos.concat(inputText); // concat은 새로운 배열을 만들어서 반환
+      return [...current, inputText]; // 스프레드 오퍼레이터(spread operator)
+    }); // 자바 스크립트 레벨에서의 데이터 조작
+
+    // setInputText(''); // input value 초기화
   }
 
   // remove event
@@ -46,9 +55,9 @@ function App() {
 
     // 또한, 불변식을 보장하기 때문에 변경이 아닌 대체를 해주어야 함
     // 방법 1: todos.slice
-    // 방법 2:todos.filter
+    // 방법 2: todos.filter
     const result = todos.filter((item) => item !== todo);
-    
+
     setTodos(result);              // 자바 스크립트 레벨에서의 데이터 조작
     localStorage.removeItem(todo); // 스토리지 레벨에서의 데이터 조작
   }
