@@ -4,6 +4,7 @@
 ## specification
 - node: v20.16.0
 - npm v10.8.1
+- react: ^18.3.1
 
 ### plugin
 - ESLint
@@ -13,6 +14,22 @@
 - JavaScript (ES6) code snippets
 
 ### etc
-- Vite
+- Vite v5.4.0
 
 ----
+
+*npm*
+- npm create vite@latest
+- npm install: package.json에 저장된 라이브러리들을 다운로드 (node_modules)
+- npm run dev
+
+*package.json*
+- 프로젝트에 필요한 라이브러리 관리 파일
+
+*package-lock.json*
+- 라이브러리간의 연관관계를 관리하는 파일
+
+---
+
+## 단축키
+- [Ctrl] + [Tap]: 최근 열어본 파일

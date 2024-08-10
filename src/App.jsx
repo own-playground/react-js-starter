@@ -1,34 +1,36 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  const [inputText, setInputText] = useState('') // inputText = '', setInputText = function
+
+  const handleInput = (event) => {
+    console.log(event.target.value);
+    const value = event.target.value;
+    setInputText(value);
+  }
+
+  /**
+   * 상태(State)
+   * - 컴포넌트에서 관리하는 데이터
+   * - UI에 표시하기 위해 React가 기억해야 되는 값
+   * 
+   * 인풋 값을 변경해야 하는 상황 같은 경우에 쓰임
+   * useState = hook 이라고 표현?
+   * 
+   * [변경할 상태, 상태를 변경하는 함수] = useState(초기값)
+   * [count, setCount] = useState(0)
+   */
+
+  // 리턴 값(html, css)이 화면 구성을 구성
   return (
-    <>
+    <div>
+      <h1>TODO 앱</h1>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <input type="text" value={inputText} onChange={handleInput} />
+        <button>추가</button>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </div>
   )
 }
 
