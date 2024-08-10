@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function TodoInput() {
+function TodoInput({ todos }) {
 
     const [inputText, setInputText] = useState('')
 

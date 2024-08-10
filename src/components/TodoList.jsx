@@ -1,27 +1,4 @@
-import { useState } from 'react'
-
-function fetchTodos() {
-  const result = [];
-
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    const value = localStorage.getItem(key);
-    result.push(value);
-  }
-  return result;
-}
-
-function TodoList() {
-
-  const [todos, setTodos] = useState(fetchTodos());
-
-  const handleRemove = (todo, index) => {
-    console.log('remove 버튼 클릭', todo, index);
-    const result = todos.filter((item) => item !== todo);
-
-    setTodos(result);
-    localStorage.removeItem(todo);
-  }
+function TodoList({ todos, onTodoRemove }) {
 
   return (
     <div>
@@ -30,7 +7,7 @@ function TodoList() {
           return (
             <li key={index}>
               <span>{todo}</span> 
-              <button onClick={() => handleRemove(todo, index)}>remove</button>
+              <button onClick={() => onTodoRemove(todo, index)}>remove</button>
             </li>
           )
         })}
